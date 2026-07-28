@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`;
+
 const offers = [
   {
     index: "01 / PROBABILITY",
@@ -71,13 +73,13 @@ export function App() {
           <nav className={menuOpen ? "main-nav is-open" : "main-nav"}>
             <button onClick={() => scrollTo("method")}>金字塔</button><button onClick={() => scrollTo("offers")}>交易课</button><button onClick={() => scrollTo("about")}>视频</button><button onClick={() => scrollTo("faq")}>加入会员</button><button onClick={() => scrollTo("about")}>关于</button><LinkButton className="login">登录</LinkButton>
           </nav>
-          <button className="menu-button" aria-label="切换菜单" onClick={() => setMenuOpen(!menuOpen)}><img src="/assets/menu.svg" alt="" /></button>
+          <button className="menu-button" aria-label="切换菜单" onClick={() => setMenuOpen(!menuOpen)}><img src={asset("menu.svg")} alt="" /></button>
         </div>
       </header>
 
       <main id="top">
         <section className="hero">
-          <img className="hero-art" src="/assets/hero-woman.png" alt="" />
+          <img className="hero-art" src={asset("hero-woman.png")} alt="" />
           <div className="hero-copy wrap">
             <p className="eyebrow">SU QIAN · INVESTMENT NOTES</p>
             <h1>苏倩 <span>（长期投资学习社区）</span></h1>
@@ -99,7 +101,7 @@ export function App() {
 
         <section className="section wrap cases"><p className="eyebrow">CASE CLOSED · 已结案案例</p><h2>历史战绩</h2><p className="subtle">按苏倩方法完整执行的公开案例。每笔都有明确的入场规则和出场规则。</p><div className="table-card"><div className="table-title"><span>已结案案例 · 8 笔</span><span>已结案</span></div><div className="table-scroll"><table><thead><tr><th>股票</th><th>区间</th><th>收益</th><th>一句话备注</th></tr></thead><tbody>{cases.map(([name, code, period, gain, note]) => <tr key={code}><td><strong>{name}</strong> <small>{code}</small></td><td>{period}</td><td className="gain">↑ {gain}</td><td>{note}</td></tr>)}</tbody></table></div><div className="notes">※ 以上案例均为按苏倩方法完整执行并已结案的盈利案例。<br />※ 这些案例里，有些是个人操作，有些是会员朋友按方法完成的。来源不同，但方法论是同一套。<br />※ 过去的战绩不代表未来。但方法论的有效性需要长期检验。<br />※ 希望这套方法能成为你长期使用的工具，而不是短期暴富的承诺。</div></div></section>
 
-        <section className="section wrap" id="about"><p className="eyebrow">ABOUT THE AUTHOR</p><h2>关于我</h2><p className="subtle">投资学习者、工具创作者与长期主义实践者</p><article className="author-card"><img src="/assets/founder.jpg" alt="苏倩" /><div className="author-content"><p className="eyebrow">FOUNDER · BUILDER</p><h3>苏倩</h3><p>苏倩主理人 / 投资学习内容创作者</p><div className="tags"><span>长期投资</span><span>企业分析 / 价格判断</span><span>规则化交易管理</span><span>持续学习与复盘</span></div><p>投资并不要求每一次判断都正确，更重要的是建立一套可以反复使用的思考框架，并在不确定中保持纪律。</p><p>我希望通过内容、工具与案例拆解，帮助你把注意力放在真正重要的事情上：<strong>看清企业、等待机会、管理风险。</strong></p><blockquote>说实话：<br /><strong>投资中更困难的，不是预测每一次涨跌。<br />而是学会静静地等待，<br />等待计划中的事情自己出现，自己去发展。</strong></blockquote><div className="history"><b>关于这套方法</b><br />它不承诺捷径，也不替你做决定。它只是把分析、等待和执行拆成可练习的步骤，让每一次选择都更清醒。</div></div></article></section>
+        <section className="section wrap" id="about"><p className="eyebrow">ABOUT THE AUTHOR</p><h2>关于我</h2><p className="subtle">投资学习者、工具创作者与长期主义实践者</p><article className="author-card"><img src={asset("founder.jpg")} alt="苏倩" /><div className="author-content"><p className="eyebrow">FOUNDER · BUILDER</p><h3>苏倩</h3><p>苏倩主理人 / 投资学习内容创作者</p><div className="tags"><span>长期投资</span><span>企业分析 / 价格判断</span><span>规则化交易管理</span><span>持续学习与复盘</span></div><p>投资并不要求每一次判断都正确，更重要的是建立一套可以反复使用的思考框架，并在不确定中保持纪律。</p><p>我希望通过内容、工具与案例拆解，帮助你把注意力放在真正重要的事情上：<strong>看清企业、等待机会、管理风险。</strong></p><blockquote>说实话：<br /><strong>投资中更困难的，不是预测每一次涨跌。<br />而是学会静静地等待，<br />等待计划中的事情自己出现，自己去发展。</strong></blockquote><div className="history"><b>关于这套方法</b><br />它不承诺捷径，也不替你做决定。它只是把分析、等待和执行拆成可练习的步骤，让每一次选择都更清醒。</div></div></article></section>
 
         <section className="section narrow faq" id="faq"><p className="eyebrow">FAQ</p><h2>常见问题</h2><p className="subtle">你可能想问的</p><div className="faq-list">{faq.map(([question, answer], index) => <div className={openFaq === index ? "faq-item active" : "faq-item"} key={question}><button onClick={() => setOpenFaq(openFaq === index ? null : index)}><span className="q-mark">Q</span><strong>{question}</strong><span>{openFaq === index ? "−" : "+"}</span></button>{openFaq === index && <div className="faq-answer">{answer}</div>}</div>)}</div></section>
       </main>
